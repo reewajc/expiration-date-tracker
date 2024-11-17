@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TextField, Button, Box } from "@mui/material";
 import { Item } from "../App";
 
 interface ItemFormProps {
@@ -25,29 +26,30 @@ const ItemForm: React.FC<ItemFormProps> = ({ onAddItem }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <div>
-        <label>Item Name:</label>
-        <input
-          type="text"
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-          style={{ marginLeft: "10px", padding: "5px" }}
-        />
-      </div>
-      <div style={{ marginTop: "10px" }}>
-        <label>Expiration Date:</label>
-        <input
-          type="date"
-          value={expiryDate}
-          onChange={(e) => setExpiryDate(e.target.value)}
-          style={{ marginLeft: "10px", padding: "5px" }}
-        />
-      </div>
-      <button type="submit" style={{ marginTop: "15px", padding: "10px 20px" }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 4 }}
+    >
+      <TextField
+        label="Item Name"
+        variant="outlined"
+        value={itemName}
+        onChange={(e) => setItemName(e.target.value)}
+        fullWidth
+      />
+      <TextField
+        label="Expiration Date"
+        type="date"
+        value={expiryDate}
+        onChange={(e) => setExpiryDate(e.target.value)}
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+      />
+      <Button type="submit" variant="contained" color="primary" fullWidth>
         Add Item
-      </button>
-    </form>
+      </Button>
+    </Box>
   );
 };
 

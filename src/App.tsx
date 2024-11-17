@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Typography } from "@mui/material";
 import ItemForm from "./components/ItemForm";
 import ItemList from "./components/ItemList";
 
@@ -16,11 +17,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Expiration Date Tracker</h1>
+    <Container maxWidth="sm" style={{ marginTop: "20px" }}>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Expiration Date Tracker
+      </Typography>
       <ItemForm onAddItem={addItem} />
       <ItemList items={items} />
-    </div>
+    </Container>
   );
 };
 
